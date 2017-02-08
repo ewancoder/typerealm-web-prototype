@@ -17,6 +17,7 @@ export class AboutComponent implements OnInit {
     private endTime: Date;
     private speed: number;
     private wrong: boolean;
+    private previousInput: string = '';
 
     constructor(
         logger: LoggerService,
@@ -29,20 +30,23 @@ export class AboutComponent implements OnInit {
         this.input.setValue('');
         this.written = '';
         this.text = this.initialText;
+        this.previousInput = '';
 
         this.input.valueChanges.subscribe((value: string) => {
             if (this.beginTime === undefined) {
                 this.beginTime = new Date();
             }
            
-            if (this.initialText.startsWith(value)) {
+            if (this.initialText.startsWith(value) && (Math.abs(this.previousInput.length - value.length) <= 1)) {
                 this.written = this.initialText.substring(0, value.length);
                 this.text = this.initialText.substring(value.length, this.initialText.length);
                 this.wrong = false;
+                this.previousInput = value;
             } else {
                 this.written = '';
                 this.text = this.initialText;
                 this.wrong = true;
+                return;
             }
 
             if (this.written === this.initialText) {
@@ -51,7 +55,9 @@ export class AboutComponent implements OnInit {
 
                 this.written = '';
                 this.text = this.initialText;
+                this.previousInput = '';
                 this.input.setValue('');
+                return;
             }
  
             this.cd.markForCheck();

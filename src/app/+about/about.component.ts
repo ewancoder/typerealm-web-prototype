@@ -52,6 +52,7 @@ export class AboutComponent implements OnInit {
             if (this.written === this.initialText) {
                 this.endTime = new Date();
                 this.speed = 60 * (this.initialText.length / 5) / ((this.endTime.getTime() - this.beginTime.getTime()) / 1000);
+                this.beginTime = undefined;
 
                 this.written = '';
                 this.text = this.initialText;

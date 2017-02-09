@@ -1,13 +1,12 @@
 <div style="text-align: center">
   <h1>{{'About' | translate}}</h1>
   <p>{{'TypeRealm is a game prototype for typists.' | translate}}</p>
-  <ng-container *ngIf="!endTime">
+  <ng-container *ngIf="!finished">
     <p>{{'Please write the following sentence as fast as possible to determine your skill.' | translate}}</p>
-    <div class="sentence" [class.wrong]="wrong"><span class="written">{{written}}</span>{{text}}</div>
-    <input [formControl]="input" spellcheck="false" />
+    <typer [text]="initialText" (speed)="finished = true; speed = $event"></typer>
   </ng-container>
-  <ng-container *ngIf="endTime">
+  <ng-container *ngIf="finished">
     <p>Your average typing speed is: {{speed}} wpm (or {{speed * 5}} cpm).</p>
-    <button type="submit" (click)="onSubmit()">{{'OK' | translate}}</button>
+    <button type="submit" (click)="repeat()">{{'OK' | translate}}</button>
   </ng-container>
 </div>

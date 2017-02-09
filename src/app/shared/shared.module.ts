@@ -1,11 +1,13 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocalizationModule } from 'ewancoder-angular-localization';
+import { ComponentsModule } from './components';
 
 @NgModule({
     exports: [
         CommonModule,
-        LocalizationModule
+        LocalizationModule,
+        ComponentsModule
     ]
 })
 export class SharedModule {

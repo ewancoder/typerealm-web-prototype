@@ -1,0 +1,11 @@
+body {
+    overflow-y: hidden;
+    font-family: 'Pangolin', cursive;
+    font-size: 1.1em;
+    background-color: #EEE;
+    color: #555;
+}
+
+* {
+    cursor: none;
+}

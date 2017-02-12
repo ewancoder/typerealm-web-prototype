@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,10 +7,11 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./typer.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TyperComponent implements OnInit {
+export class TyperComponent implements OnChanges, OnInit {
     @Input() readonly text: string;
     @Output() readonly speed: EventEmitter<number> = new EventEmitter<number>();
-    readonly input: FormControl = new FormControl('');
+    @Input() input: string;
+    readonly inputControl: FormControl = new FormControl('');
     previous: string;
     written: string;
     left: string;
@@ -25,10 +26,16 @@ export class TyperComponent implements OnInit {
         this.wrong = false;
     }
 
+    ngOnChanges() {
+        if (this.input !== undefined) {
+            this.inputControl.setValue(this.input);
+        }
+    }
+
     ngOnInit() {
         this.left = this.text;
 
-        this.input.valueChanges.subscribe((value: string) => {
+        this.inputControl.valueChanges.subscribe((value: string) => {
             if (this.begin === undefined) {
                 this.begin = new Date();
             }
@@ -48,7 +55,7 @@ export class TyperComponent implements OnInit {
                 let speed = 60 * (this.text.length / 5) / ((end.getTime() - this.begin.getTime()) / 1000);
                 this.begin = undefined;
 
-                this.input.setValue('');
+                this.inputControl.setValue('');
                 this.previous = '';
                 this.written = '';
                 this.left = '';

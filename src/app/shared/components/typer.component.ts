@@ -11,7 +11,7 @@ export class TyperComponent implements OnChanges, OnInit {
     @Input() readonly text: string;
     @Output() readonly speed: EventEmitter<number> = new EventEmitter<number>();
     @Input() input: string;
-    readonly inputControl: FormControl = new FormControl('');
+    @Input() readonly inputControl: FormControl = new FormControl('');
     previous: string;
     written: string;
     left: string;

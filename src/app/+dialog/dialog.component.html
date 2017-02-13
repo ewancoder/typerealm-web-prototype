@@ -1,7 +1,7 @@
 {{intro}}
 
 <div *ngFor="let option of options">
-  <typer [input]="myInput" [text]="option.text" (speed)="choose(option)"></typer>
+  <typer [inputControl]="inputControl" [text]="option.text" (speed)="choose(option)"></typer>
 </div>
 
 <input [formControl]="inputControl">

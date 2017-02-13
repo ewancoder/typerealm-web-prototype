@@ -14,7 +14,6 @@ export class DialogComponent {
     // These will be inputs.
     intro: string;
     options: DialogOption[];
-    myInput: string = '';
 
     readonly inputControl: FormControl = new FormControl('');
 
@@ -24,8 +23,6 @@ export class DialogComponent {
             { optionId: '1', text: 'I want to play' },
             { optionId: '2', text: 'I want to exit' }
         ];
-
-        this.inputControl.valueChanges.subscribe(i => this.myInput = i);
     }
 
     choose(option: DialogOption) {

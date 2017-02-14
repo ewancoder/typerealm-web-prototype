@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./typer.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TyperComponent implements OnChanges, OnInit {
+export class TyperComponent implements OnInit {
     @Input() readonly text: string;
     @Output() readonly speed: EventEmitter<number> = new EventEmitter<number>();
     @Input() input: string;
@@ -24,12 +24,6 @@ export class TyperComponent implements OnChanges, OnInit {
         this.written = '';
         this.left = '';
         this.wrong = false;
-    }
-
-    ngOnChanges() {
-        if (this.input !== undefined) {
-            this.inputControl.setValue(this.input);
-        }
     }
 
     ngOnInit() {

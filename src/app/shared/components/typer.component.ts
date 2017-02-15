@@ -61,9 +61,4 @@ export class TyperComponent implements OnInit {
             this.cd.markForCheck();
         });
     }
-
-    intercept(e: KeyboardEvent) {
-        if (e.code === 'Tab') {
-        }
-    }
 }

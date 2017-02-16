@@ -8,7 +8,8 @@ interface DialogOption {
 
 @Component({
     templateUrl: './dialog.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent {
     // These will be inputs.

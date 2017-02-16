@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+interface TyperInfo {
+    speed: number;
+}
+
 @Component({
     selector: 'typer',
     templateUrl: './typer.component.html',
@@ -9,9 +13,9 @@ import { FormControl } from '@angular/forms';
 })
 export class TyperComponent implements OnInit {
     @Input() readonly text: string;
-    @Output() readonly speed: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly done: EventEmitter<TyperInfo> = new EventEmitter<TyperInfo>();
     @Input() input: string;
-    @Input() readonly inputControl: FormControl = new FormControl('');
+    @Input() readonly inputControl: FormControl;
     previous: string;
     written: string;
     left: string;
@@ -55,7 +59,7 @@ export class TyperComponent implements OnInit {
                 this.left = '';
                 this.wrong = false;
 
-                this.speed.emit(speed);
+                this.done.emit({ speed: speed });
             }
 
             this.cd.markForCheck();

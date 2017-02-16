@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared';
+import { SharedModule, SharedFormsModule } from '../shared';
 import { routing } from './about.routing';
 import { AboutComponent } from './about.component';
 
 @NgModule({
     imports: [
         SharedModule.withoutProviders(),
+        SharedFormsModule.withoutProviders(),
         routing
     ],
     declarations: [

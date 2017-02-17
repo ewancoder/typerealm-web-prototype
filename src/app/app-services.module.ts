@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpModule } from 'ewancoder-angular-http';
 import { LocalizationModule, Translation, provideI18nTranslations } from 'ewancoder-angular-localization';
 import { LoggerModule, verboseLoggerServiceProvider } from 'ewancoder-angular-logger';
-import { ApiConfig } from './shared';
+import { ApiConfig, TypeService } from './shared';
 
 let translations: Translation[] = [
     {
@@ -29,7 +29,9 @@ export class AppServicesModule {
             providers: [
                 ApiConfig,
                 verboseLoggerServiceProvider,
-                provideI18nTranslations(translations)
+                provideI18nTranslations(translations),
+
+                TypeService
             ]
         };
     }

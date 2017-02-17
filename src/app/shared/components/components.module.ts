@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TyperComponent } from './typer.component';
+import { DialogComponent } from './dialog.component';
 
 @NgModule({
     imports: [
@@ -9,10 +9,10 @@ import { TyperComponent } from './typer.component';
         ReactiveFormsModule,
     ],
     declarations: [
-        TyperComponent
+        DialogComponent
     ],
     exports: [
-        TyperComponent
+        DialogComponent
     ]
 })
 export class ComponentsModule { }

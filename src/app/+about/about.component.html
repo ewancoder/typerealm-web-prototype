@@ -3,7 +3,7 @@
   <p>{{'TypeRealm is a game prototype for typists.' | translate}}</p>
   <ng-container *ngIf="!finished">
     <p>{{'Please write the following sentence as fast as possible to determine your skill.' | translate}}</p>
-    <typer [inputControl]="inputControl" [text]="initialText" (speed)="finished = true; speed = $event.speed"></typer>
+    <!--<typer [inputControl]="inputControl" [text]="initialText" (speed)="finished = true; speed = $event.speed"></typer>-->
 <input [formControl]="inputControl">
 
   </ng-container>
